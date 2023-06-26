@@ -1,0 +1,19 @@
+{
+  "name": "first-experience-with-npm",
+  "version": "1.0.0",
+  "description": "my first npm experience",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index"
+  },
+  "keywords": [
+    "npm",
+    "node"
+  ],
+  "author": "Tolgahan",
+  "license": "ISC",
+  "dependencies": {
+    "moment": "^2.29.4"
+  }
+}
