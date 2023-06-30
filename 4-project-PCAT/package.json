@@ -1,0 +1,14 @@
+{
+  "name": "project-pcat",
+  "version": "1.0.0",
+  "description": "PCAT project by Tolgahan Tolu and patika.dev",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tolgahan Tolu and Arin",
+  "license": "ISC",
+  "devDependencies": {
+    "prettier": "2.8.8"
+  }
+}
