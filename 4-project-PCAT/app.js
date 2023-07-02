@@ -21,6 +21,10 @@ app.set('view engine', 'ejs'); //! bizim view klasörümüze bakar
 
 app.use(express.static('public')); //! req-res loop içindeki her şeye middleware denir, express.startic de bir middleware.
 
+//! 👇 Form aracılığıyla tarayıcıya gönderilen veriyi okumak için gerekli middleware'ler - (önceden body parser modülü kullanılırdı) 👇
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
 // routes
 app.get('/', (req, res) => {
   //  res.sendFile(path.resolve(__dirname, 'temp/index.html'));
@@ -33,6 +37,11 @@ app.get('/about', (req, res) => {
 app.get('/add', (req, res) => {
   //  res.sendFile(path.resolve(__dirname, 'temp/index.html'));
   res.render('add');
+});
+
+app.post('/photos', (req, res) => {
+  console.log(req.body);
+  res.redirect('/');
 });
 
 const port = 3000 || process.env.PORT;
