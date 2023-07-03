@@ -1,8 +1,16 @@
 const express = require('express');
+const { connect } = require('mongoose');
 const ejs = require('ejs');
 const path = require('path');
+const Photo = require('./models/Photo');
 
 const app = express();
+
+// connect db
+connect('mongodb://localhost/pcat', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 // template engine
 app.set('view engine', 'ejs'); //! bizim view klasörümüze bakar
@@ -26,10 +34,13 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // routes
-app.get('/', (req, res) => {
+app.get('/', async (req, res) => {
+  const photos = await Photo.find({});
+
+  res.render('index', { photos });
   //  res.sendFile(path.resolve(__dirname, 'temp/index.html'));
-  res.render('index');
 });
+
 app.get('/about', (req, res) => {
   //  res.sendFile(path.resolve(__dirname, 'temp/index.html'));
   res.render('about');
@@ -39,8 +50,9 @@ app.get('/add', (req, res) => {
   res.render('add');
 });
 
-app.post('/photos', (req, res) => {
-  console.log(req.body);
+app.post('/photos', async (req, res) => {
+  //  console.log(req.body);
+  await Photo.create(req.body);
   res.redirect('/');
 });
 
