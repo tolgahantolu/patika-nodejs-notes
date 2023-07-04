@@ -49,6 +49,12 @@ app.get('/add', (req, res) => {
   //  res.sendFile(path.resolve(__dirname, 'temp/index.html'));
   res.render('add');
 });
+app.get('/photos/:id', async (req, res) => {
+  const photo = await Photo.findById(req.params.id);
+  res.render('photo', {
+    photo,
+  });
+});
 
 app.post('/photos', async (req, res) => {
   //  console.log(req.body);
