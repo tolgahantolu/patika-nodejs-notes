@@ -16,10 +16,12 @@ app.set("view engine", "ejs");
 
 //! MIDDLEWARES
 app.use(express.static("public"));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 //! ROUTES
 app.use("/", pageRoute); //! anlamı şu: / ile başlayan bir istek geldiğinde bunu pageRoute'a gönder...
-app.get("/courses", courseRoute); //! anlamı şu: /courses ile başlayan bir istek geldiğinde bunu courseRoute'a gönder...
+app.use("/courses", courseRoute); //! anlamı şu: /courses ile başlayan bir istek geldiğinde bunu courseRoute'a gönder...
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
