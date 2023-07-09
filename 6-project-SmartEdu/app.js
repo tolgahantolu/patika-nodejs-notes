@@ -2,6 +2,7 @@ const express = require("express");
 const { connect } = require("mongoose");
 const pageRoute = require("./routes/pageRoute");
 const courseRoute = require("./routes/courseRoute");
+const categoryRoute = require("./routes/categoryRoute");
 
 const app = express();
 
@@ -22,6 +23,7 @@ app.use(express.urlencoded({ extended: true }));
 //! ROUTES
 app.use("/", pageRoute); //! anlamı şu: / ile başlayan bir istek geldiğinde bunu pageRoute'a gönder...
 app.use("/courses", courseRoute); //! anlamı şu: /courses ile başlayan bir istek geldiğinde bunu courseRoute'a gönder...
+app.use("/categories", categoryRoute);
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
