@@ -35,3 +35,9 @@ exports.loginUser = async (req, res) => {
     console.log(error.message);
   }
 };
+
+exports.logoutUser = (req, res) => {
+  req.session.destroy(() => {
+    res.redirect("/");
+  });
+};
