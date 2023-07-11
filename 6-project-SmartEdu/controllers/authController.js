@@ -22,7 +22,11 @@ exports.loginUser = async (req, res) => {
     const { email, password } = req.body;
     const user = await User.findOne({ email });
     const same = bcrypt.compare(password, user.password);
-    if (same) res.status(200).send("YOU ARE LOGGED IN");
+    if (same) {
+      //! USER SESSION
+      req.session.userID = user._id;
+      res.status(200).redirect("/");
+    }
   } catch (error) {
     res.status(400).json({
       status: "fail",
