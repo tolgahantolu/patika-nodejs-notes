@@ -22,7 +22,7 @@
 							<div class="post-content">
 								<div class="post-date">
 									<span class="day">
-										<%= course.createdAt.getUTCDate() + 1 %>
+										<%= course.createdAt.getUTCDate() %>
 									</span>
 									<span class="month">
 										<%= course.createdAt.toLocaleString('en-US', { month: 'long' }) %>
@@ -49,8 +49,10 @@
 
 						<div class="blog-author">
 							<div class="author-bio">
-								<h3 class="author_name"><a href="#">Tom Jobs</a></h3>
-								<h5>CEO at <a href="#">SmartEDU</a></h5>
+								<h3 class="author_name"><a href="#">
+										Buraya course.user.name gelecek
+									</a></h3>
+								<h5>Teacher at <a href="#">SmartEDU</a></h5>
 								<p class="author_det">
 									Lorem ipsum dolor sit amet, consectetur adip, sed do eiusmod tempor incididunt ut
 									aut reiciendise voluptat maiores alias consequaturs aut perferendis doloribus omnis

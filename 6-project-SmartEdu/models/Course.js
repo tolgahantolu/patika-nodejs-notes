@@ -6,7 +6,8 @@ const CourseSchema = new Schema({
   description: { type: String, required: true, trim: true },
   createdAt: { type: Date, default: Date.now },
   slug: { type: String, unique: true },
-  category: { type: Schema.Types.ObjectId, ref: "category" }, //! Kurslar ve kategoriler arasında bir ilişki var
+  category: { type: Schema.Types.ObjectId, ref: "Category" }, //! Kurslar ve kategoriler arasında bir ilişki var
+  user: { type: Schema.Types.ObjectId, ref: "User" },
 });
 
 // Middleware (for slug)
