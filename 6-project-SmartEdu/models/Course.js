@@ -19,6 +19,6 @@ CourseSchema.pre("validate", async function (next) {
   next();
 });
 
-const Course = model("course", CourseSchema);
+const Course = model("Course", CourseSchema);
 
 module.exports = Course;

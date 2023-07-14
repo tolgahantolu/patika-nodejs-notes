@@ -10,6 +10,12 @@ const UserSchema = new Schema({
     enum: ["student", "teacher", "admin"],
     default: "student",
   },
+  courses: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Course",
+    },
+  ],
 });
 
 //! Middleware (for password/bcrypt)
@@ -22,6 +28,6 @@ UserSchema.pre("save", function (next) {
   });
 });
 
-const User = model("user", UserSchema);
+const User = model("User", UserSchema);
 
 module.exports = User;

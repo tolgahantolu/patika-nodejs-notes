@@ -10,5 +10,7 @@ router
 //router.route("/yeni").post(courseController.yeniKurs); //! http://localhost:3000/courses/yeni
 router.route("/").get(courseController.getAllCourses);
 router.route("/:slug").get(courseController.getCourse);
+router.route("/enroll").post(courseController.enrollCourse);
+router.route("/release").post(courseController.releaseCourse);
 
 module.exports = router;

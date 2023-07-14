@@ -19,7 +19,7 @@
 							<div class="image-blog">
 								<img src="/images/blog_single.jpg" alt="" class="img-fluid">
 							</div>
-							<div class="post-content">
+							<div class="mt-2 post-content">
 								<div class="post-date">
 									<span class="day">
 										<%= course.createdAt.getUTCDate() %>
@@ -28,29 +28,39 @@
 										<%= course.createdAt.toLocaleString('en-US', { month: 'long' }) %>
 									</span>
 								</div>
-								<div class="meta-info-blog">
+								<% if(user && !(user.courses.includes(course._id))) { %>
+									<form method="POST" action="/courses/enroll">
+										<input type="hidden" name="course_id" value="<%= course._id %>">
+										<button type="submit" class="btn btn-warning text-white"><span>
+												Enroll
+												Course
+											</span></button>
+									</form>
+									<% } %>
+
+										<!--<div class="meta-info-blog">
 									<span><i class="fa fa-calendar"></i> <a href="#">
 											<%= course.createdAt.toLocaleDateString('en-US', {year: 'numeric' ,
 												month: 'long' , day: '2-digit' }); %>
 										</a> </span>
-								</div>
-								<div class="blog-title">
-									<h2><a href="#" title="">
-											<%= course.name %>
-										</a></h2>
-								</div>
-								<div class="blog-desc">
-									<blockquote class="default">
-										<%= course.description %>
-									</blockquote>
-								</div>
+								</div>-->
+										<div class="blog-title">
+											<h2><a href="#" title="">
+													<%= course.name %>
+												</a></h2>
+										</div>
+										<div class="blog-desc">
+											<blockquote class="default">
+												<%= course.description %>
+											</blockquote>
+										</div>
 							</div>
 						</div>
 
 						<div class="blog-author">
 							<div class="author-bio">
 								<h3 class="author_name"><a href="#">
-										Buraya course.user.name gelecek
+										<%= course.user.name %>
 									</a></h3>
 								<h5>Teacher at <a href="#">SmartEDU</a></h5>
 								<p class="author_det">
