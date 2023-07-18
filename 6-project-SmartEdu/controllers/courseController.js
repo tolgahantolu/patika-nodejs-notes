@@ -141,6 +141,7 @@ exports.deleteCourse = async (req, res) => {
 
 exports.updateCourse = async (req, res) => {
   try {
+    //await Course.findOneAndUpdate({ slug: req.params.slug }, req.body);
     const course = await Course.findOne({ slug: req.params.slug });
     course.name = req.body.name;
     course.description = req.body.description;
